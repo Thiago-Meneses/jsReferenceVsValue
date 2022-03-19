@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <title>Object Reference vs Values</title>
+
+        <!-- Personal CSS -->
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" type="text/css" href="https://thiago-meneses.github.io/spacing.css">
+
+        <!-- FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Roboto+Mono:wght@100;200;300;400;500;600;700&family=Nunito:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="bd-container">
+            <main class="main-container">
+                <div class="content-header mb-5">
+                    <h1 class="headline title-frame my-3">Object Reference vs Values</h1>
+                </div>
+                <div class="content">
+                    <div class="frame-line">
+                        <h1 class='headline' id="filter"><span class="backdrop">Passing by <span class="blue-backdrop">Value</span></span></h1>
+                        <p class="mt-3"><b>1º Step:</b></p>
+                        <p class="mt-4">Declaring two variables</b>
+                        <pre class="snippet">
+                            <code>
+let a = 10
+let b = "Hello"
+                            </code>
+                        </pre>
+                        <p class="mt-3">Both variables were <b>passed by value</b></p>
+                        <p class="mt-2">Ok, but what does Passing by value mean?</p>
+                        <p class="px-3">It means that these variables were <span class="blue-backdrop">directly linked to some value</span></p>
+                        <p class="px-3 mt-1"><b>There is no intermediary step from the variables that are being declared to the the values which are being assigned to them.</b></p>
+                        <p class="mt-5 mt-1">In our example:</p>
+                        <p class="px-3">The values on the right ( <code class="inlineCode">10</code> and <code class="inlineCode">Hello</code> ) will be directly assigned to the variables on the left ( <code class="inlineCode">a</code> and <code class="inlineCode">b</code> )</p>
+                        <p class="px-3 mt-4"><code class="inlineCode">a</code> is directly linked to the value <code class="inlineCode">10</code></p>
+                        <p class="px-3"><code class="inlineCode">b</code> is directly linked to the value <code class="inlineCode">"Hello"</code></p>
+                        <p class="mt-5"><b>Variables are only passed by value when we assign <span class="blue-backdrop">Primitive Types</span> to them</b></p>
+                        <p class="mt-5"><b>2º Step:</b></p>
+                        <p class="mt-4">Declaring another variable</p>
+                        <pre class="snippet">
+                            <code>
+let a = 10
+let b = "Hello"
+let c = a
+                            </code>
+                        </pre>
+                        <p class="mt-3">The newly created variable <code class="inlineCode">c</code> is assigned with value <code class="inlineCode">a</code></p>
+                        <p>The value on the right (<code class="inlineCode">a</code>) will be directly assigned to the variable on the left (<code class="inlineCode">c</code>)</p>
+                        <p>The value of <code class="inlineCode">c</code> will be equal to <code class="inlineCode">10</code></p>
+                        <p class="mt-5"><b>3º Step:</b></p>
+                        <pre class="snippet">
+                            <code>
+let a = 10
+let b = "Hello"
+let c = a
+let c = c + 1
+                            </code>
+                        </pre>
+                        <p class="mt-3">We add another step to show that our variables are indeed being passed by value, we add 1 to <code class="inlineCode">c</code></p>
+                        <p class="mt-1"><code class="inlineCode">c</code> is now equal to 11</p>
+                        <p class="mt-1"><code class="inlineCode">a</code> and <code class="inlineCode">b</code> remain unchanged</p>
+                        <p class="mt-1">When we assigned the value of <code class="inlineCode">a</code> to <code class="inlineCode">c</code>, both variables became equal to <code class="inlineCode">10</code>.</p>
+                        <p class="mt-5">When we changed <code class="inlineCode">c</code>, the variable <code class="inlineCode">a</code> was <b>not altered</b></p>
+                        <p class="mt-1">No matter what we do with <code class="inlineCode">c</code>, <code class="inlineCode">a</code> remains unaffected, and vice-versa.</p>
+                        <p class="mt-5">These variables, even if equal in value, were assigned to two "different" number tens, independent of eachother.</p>
+                        <p class="mt-1">Both were equal to <code class="inlineCode">10</code>, but these weren't the same number 10</p>
+                    </div>
+                    <div class="frame-line">
+                        <h1 class='headline' id="passingReference"><span class="backdrop">Passing by <span class="blue-backdrop">Reference</span></span></h1>
+                        <p class="mt-5">Now we are going to see how passing by reference is completely opposite to what we've just learned.</p>
+                        <p class="mt-5"><b>1º Step:</b></p>
+                        <p class="mt-4">Declaring three variables</b>
+                        <pre class="snippet">
+                            <code>
+let a = 10
+let b = "Hello"
+let c = [1, 2]
+                            </code>
+                        </pre>
+                        <p class="mt-3">When talking about <b>Passing by Reference</b>, we need to include <b>Addresses</b> and the <b>Value</b> which they contain.</p>
+                        <p class="mt-1">We declared the same previous variables, but <code class="inlineCode">c</code> now has been assigned with an array</p>
+                        <p class="mt-5">This opens up to a new information we have to keep in mind</p>
+                        <p class="mt-1"><span class="blue-backdrop">Arrays, Objects and essentially anything that is not a Primitive Type, will be Passed by Reference</span></p>
+                        <p class="mt-5">This is why variable <code class="inlineCode">c</code>, instead of having the expected value of <code class="inlineCode">[1, 2]</code> , actually has a value of <code class="inlineCode">00x01</code>
+                        <p class="mt-5">This value is just a <span class="blue-backdrop">Memory Address</span></p>
+                        <p class="mt-1">More specifically, the value <code class="inlineCode">0x01</code> is an example for what a Memory Address name might look like.</p>
+                        <p class="mt-1">This Memory Address is what actually holds the real value inside the memory of your computer</p>
+                        <p class="mt-5">Variable <code class="inlineCode">c</code> just stores a <b>reference</b> to that memory address
+                        <p class="mt-1">The memory address itself is what actually has the assigned value</p>
+                        <p class="mt-5"><b>2º Step:</b></p>
+                        <p>Declaring a new variable</p>
+                        <pre class="snippet">
+                            <code>
+let a = 10
+let b = "Hello"
+let c = [1, 2]
+let d = c
+                            </code>
+                        </pre>
+                        <p class="mt-3">We have a new variable <code class="inlineCode">d</code> assigned with <code class="inlineCode">c</code> as value</p>
+                        <p class="mt-1">As we saw previously, <code class="inlineCode">c</code> stores a link to a memory address, and <b>this address is what is going to be assigned to <code class="inlineCode">d</code>, not the actual array itself.</b></p>
+                        <p class="mt-5"><code class="inlineCode">c</code> and <code class="inlineCode">d</code> are now referencing the same <b>Memory Address</b></p>
+                        <p class="mt-5"><b>3º Step:</b></p>
+                        <pre class="snippet">
+                            <code>
+let a = 10
+let b = "Hello"
+let c = [1, 2]
+let d = c
+d.push(3)
+                            </code>
+                        </pre>
+                        <p class="mt-3">After pushing <code class="inlineCode">3</code> to the variable <code class="inlineCode">d</code>, the value this Memory Address refers has been altered.</p>
+                        <p class="mt-1">The value from the Memory Address has been altered and no longer is <code class="inlineCode">[1, 2]</code>, but instead <code class="inlineCode">[1, 2, 3]</code></p>
+                        <p class="mt-5">If both <code class="inlineCode">c</code> and <code class="inlineCode">d</code> are referencing the same memory address, something is going to happen.</p>
+                        <p class="mt-1">Even if we didn't want to, <code class="inlineCode">c</code> is also going to change</p>
+                        <p class="mt-1">As we have changed the value itself, and not the reference to the value, <b>both variables will be assigned with a newly changed value</b></p>
+                        <p class="mt-3"><span class="blue-backdrop">We have modified two variables when we only wanted to modify one</span></p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>
